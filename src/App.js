@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/ui/Header';
+import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import theme from './components/ui/Theme';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Header />
+          <Switch>
+            <Route exact path="/" component={() => <div>Home</div>} />
+            <Route exact path="/photos" component={() => <div>Photos</div>} />
+            <Route exact path="/location" component={() => <div>Location</div>} />
+            <Route exact path="/riders" component={() => <div>Riders</div>} />
+            <Route exact path="/slogan" component={() => <div>Slogan contest</div>} />
+          </Switch>
+        </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
