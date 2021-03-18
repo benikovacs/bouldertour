@@ -82,6 +82,9 @@ const useStyles = makeStyles(theme => ({
         opacity: 1,
         color: theme.palette.common.red
 
+    },
+    appbar: {
+        zIndex: theme.zIndex.modal + 1,
     }
     
 
@@ -134,6 +137,9 @@ export default function Header(props) {
             <SwipeableDrawer disableBackdropTransition={!iOS} disableDiscovery={iOS} open={openDrawer} 
                 onClose={() => SetOpenDrawer(false)} onOpen={() => SetOpenDrawer(true)}
                 classes={{paper: classes.drawer}} >
+
+                    <div className={classes.toolbarMargin} />
+
                     <List disablePadding>
                         <ListItem onClick={() => {SetOpenDrawer(false); setValue(0)}} divider button component={Link} to="/" selected={value === 0}>
                             <ListItemText className={value === 0 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem } disableTypography>Home</ListItemText>
@@ -161,7 +167,7 @@ export default function Header(props) {
     return (
         <React.Fragment>
             <ElevationScroll>
-                <AppBar position='fixed' color='primary'>
+                <AppBar position='fixed' color='primary' className={classes.appbar}>
                     <Toolbar disableGutters={false}>
                         <Button component={Link} to="/" disableRipple onClick={() => setValue(0)}>
                             <img alt="logo" className={classes.logo} src={logo} />
