@@ -101,26 +101,26 @@ export default function Header(props) {
     const [value, setValue] = useState(0);
 
     const handleChange = (e, newValue) => {
-        setValue(newValue)
+        props.setValue(newValue)
     }
 
     useEffect(() => {
         if (window.location.pathname === "/" && value !== 0) {
-         setValue(0); 
+         props.setValue(0); 
         } else if (window.location.pathname === "/photos" && value !== 1) {
-            setValue(1);
+            props.setValue(1);
         } else if (window.location.pathname === "/location" && value !== 2) {
-            setValue(2);
+            props.setValue(2);
         } else if (window.location.pathname === "/riders" && value !== 3) {
-            setValue(3);
+            props.setValue(3);
         } else if (window.location.pathname === "/slogan" && value !== 4) {
-            setValue(4);
+            props.setValue(4);
         }
     }, [value]);
 
     const tabs = (
         <React.Fragment>
-            <Tabs value={value} onChange={handleChange}
+            <Tabs value={props.value} onChange={handleChange}
                 className={classes.tabContaier}>
                     <Tab className={classes.tab} component={Link} to="/" label="Home" />
                     <Tab className={classes.tab} component={Link} to="/photos" label="Photos" />
@@ -141,19 +141,19 @@ export default function Header(props) {
                     <div className={classes.toolbarMargin} />
 
                     <List disablePadding>
-                        <ListItem onClick={() => {SetOpenDrawer(false); setValue(0)}} divider button component={Link} to="/" selected={value === 0}>
+                        <ListItem onClick={() => {SetOpenDrawer(false); props.setValue(0)}} divider button component={Link} to="/" selected={value === 0}>
                             <ListItemText className={value === 0 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem } disableTypography>Home</ListItemText>
                         </ListItem>
-                        <ListItem onClick={() => {SetOpenDrawer(false); setValue(1)}} divider button component={Link} to="/photos" selected={value === 1}>
+                        <ListItem onClick={() => {SetOpenDrawer(false); props.setValue(1)}} divider button component={Link} to="/photos" selected={value === 1}>
                             <ListItemText className={value === 1 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem } disableTypography>Photos</ListItemText>
                         </ListItem>
-                        <ListItem onClick={() => {SetOpenDrawer(false); setValue(2)}} divider button component={Link} to="/location" selected={value === 2}>
+                        <ListItem onClick={() => {SetOpenDrawer(false); props.setValue(2)}} divider button component={Link} to="/location" selected={value === 2}>
                             <ListItemText className={value === 2 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem } disableTypography>Location</ListItemText>
                         </ListItem>
-                        <ListItem onClick={() => {SetOpenDrawer(false); setValue(3)}} divider button component={Link} to="/Riders" selected={value === 3}>
+                        <ListItem onClick={() => {SetOpenDrawer(false); props.setValue(3)}} divider button component={Link} to="/Riders" selected={value === 3}>
                             <ListItemText className={value === 3 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem } disableTypography>Riders</ListItemText>
                         </ListItem>
-                        <ListItem onClick={() => {SetOpenDrawer(false); setValue(4)}} divider button component={Link} to="/slogan" selected={value === 4}>
+                        <ListItem onClick={() => {SetOpenDrawer(false); props.setValue(4)}} divider button component={Link} to="/slogan" selected={value === 4}>
                             <ListItemText className={value === 4 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem } disableTypography>Slogan Contest</ListItemText>
                         </ListItem>
                     </List>
@@ -169,7 +169,7 @@ export default function Header(props) {
             <ElevationScroll>
                 <AppBar position='fixed' color='primary' className={classes.appbar}>
                     <Toolbar disableGutters={false}>
-                        <Button component={Link} to="/" disableRipple onClick={() => setValue(0)}>
+                        <Button component={Link} to="/" disableRipple onClick={() => props.setValue(0)}>
                             <img alt="logo" className={classes.logo} src={logo} />
                         </Button >
                         {matches ? drawer  : tabs}
