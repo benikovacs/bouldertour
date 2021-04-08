@@ -4,6 +4,10 @@ import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/sty
 import theme from './components/ui/Theme';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Footer from './components/ui/Footer';
+import Home from './components/ui/Home';
+
+
+
 
 
 function App() {
@@ -13,7 +17,7 @@ function App() {
       <BrowserRouter>
         <Header value={value} setValue={setValue} />
           <Switch>
-            <Route exact path="/" component={() => <div>Home</div>} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/photos" component={() => <div>Photos</div>} />
             <Route exact path="/location" component={() => <div>Location</div>} />
             <Route exact path="/riders" component={() => <div>Riders</div>} />
