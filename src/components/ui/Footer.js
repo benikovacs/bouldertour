@@ -10,7 +10,9 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         color: theme.palette.common.orange,
         zIndex: 1302,
-        position: "relative",
+        position: "fixed",
+        bottom: '0px'
+        
     },
     adornment: {
         width: '25em',
@@ -27,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     link: {
         fontFamily: "Arial",
         fontWeight: "thin",
-        fontSize: "1.2rem",
+        fontSize: "1rem",
         color: theme.palette.common.orange,
         textDecoration: "none",
         [theme.breakpoints.down("md")]: {

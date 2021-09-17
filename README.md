@@ -68,3 +68,29 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+componentDidMount() {
+  axios.get(`http://127.0.0.1:3001/api/v1/riders`)
+  .then(response => {
+    this.setState({riders: response.data})
+  })
+  .catch(error => console.log(error))
+} 
+
+ {this.state.riders.map( (rider, index) => {
+          return (
+            <Marker
+              key={index}
+              title={rider.firstname+" "+rider.lastname}
+              name={"#"+rider.id+" from "+rider.city+" ("+rider.state+")"}
+              position={{lat: rider.lat, lng: rider.lng}}
+              onClick={this.onMarkerClick} >
+                
+              </Marker>
+                
+
+            
+          )}
+          
+        )}
