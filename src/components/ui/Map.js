@@ -93,7 +93,7 @@ render() {
 
 export default GoogleApiWrapper(
   (props) => ({
-    apiKey: 'AIzaSyC7IYlikDwHAmPFnIX55oofE3Rxrb8lstw',
+    apiKey: '',
     language: props.language,
   }
 ))(Location); 
